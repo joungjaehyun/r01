@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 2 HTML</title>
+</head>
+
+<body>
+    <h1>Test 2 HTML</h1>
+
+    <h1 id="show"></h1>
+
+    <div>
+        <button id="incBtn">INC</button>
+        <button id="decBtn">DEC</button>
+    </div>
+
+    <script>
+        // 모듈 패턴
+        // 프로젝트의 코드 단위를 명확하게 분리하고 구성하는데 큰 도움
+        // 단위를 만들때 쓰는 패턴
+        function Nums(){
+
+            let num = 1
+
+            // closer => 암묵적으로 참조하는 변수가 있다.
+            // 함수형언어에서 상태를 유지를 하려 사용 원래 함수는 상태가없다.
+            // 자바스크립트 변수의 범위는 기본적으로 함수단위
+            // 함수안의 변수를 접근 할 수 없다
+            // 접근제한자는 호출하는자의 권한을 체크하는것 
+            // => 자바스크립트는 접근제한자가 없다.
+
+            function inc (){
+                num+=1
+                console.log("inc")
+            }
+            function dec (){
+
+                console.log("dec")
+            }
+
+            return {inc:inc, dec:dec}
+        }
+
+        const obj1 = Nums()
+        console.log(obj1)
+        
+        obj1.inc()
+        obj1.dec()
+
+        // 숫자 1개 존재
+        // var 와 let의 차이
+        // var는 window의 Scope에 달라붙는다.
+        // let num = 1
+
+        // function inc() {
+        //     num += 1
+        // }
+        // function dec() {
+        //     num -= 1
+        // }
+
+
+        // document.querySelector('#incBtn').addEventListener("click", e => { 
+        //     inc()
+        //     rerender()
+        //  }, false)
+
+        // // 버튼이 시작시 계속출력되야된다
+        // function rerender() {
+        //     document.querySelector('#show').innerHTML = num
+        // }
+    </script>
+</body>
+
+</html>
