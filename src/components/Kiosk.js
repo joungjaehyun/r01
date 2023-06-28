@@ -10,6 +10,19 @@ const products = [
     { pno: 3, pname: "Milk Tea", price: 4000 },
     { pno: 4, pname: "Green Tea", price: 2000 },
 ]
+// 총합을 구하는 함수
+const getTotal = (arr)=>{
+    if(!arr || arr.length===0){
+        return 0
+    }
+    // reduce
+    let sum =0;
+    for(const ele of arr){
+        sum +=(ele.price*ele.qty)
+    }
+    return sum
+}
+
 
 const Kiosk = () => {
     // 2-1 카트에 담기 위해서 (useState로 re-rendering)
@@ -34,6 +47,29 @@ const Kiosk = () => {
         const cartItem = result[0]
         cartItem.qty += 1
         setItems([...items])
+
+
+    }
+    // 카트내에서 추가 삭제를 위한 함수
+    const hadleClickQty = (pno, amount) => {
+        console.log("pno", pno, "amount", amount)
+        // 실제 버튼눌리는 곳을 찾기 시작
+        const target = items.filter(item => item.pno === pno)[0]
+        console.log(target)
+        // increase
+        if (amount === 1) {
+            target.qty += 1
+            setItems([...items])
+        }// decrease
+        else{
+            if(target.qty ===1){
+                setItems(items.filter(ele => ele.pno!== pno))
+            }else{
+                target.qty -= 1
+                setItems([...items])
+            }
+        }
+
     }
 
     return (
@@ -65,13 +101,18 @@ const Kiosk = () => {
                                 <div>{item.price}</div>
                             </div>
                             <div className="flex justify-center text-2xl">
-                                <button className="rounded-lg bg-orange-600 p-4 m-1">+</button>
+                                <button className="rounded-lg bg-orange-600 p-4 m-1"
+                                    onClick={() => { hadleClickQty(item.pno, 1) }}>+</button>
                                 <p className="p-2 m-2 text-red-500">{item.qty}</p>
-                                <button className="rounded-lg bg-orange-600 p-4 m-1">-</button>
+                                <button className="rounded-lg bg-orange-600 p-4 m-1"
+                                    onClick={() => { hadleClickQty(item.pno, -1) }}>-</button>
                             </div>
 
                         </li>)}
                 </ul>
+                <div className="bg-pink-700 text-5xl float-right">
+                    TOTAL {getTotal(items)}
+                </div>
             </div>
 
         </div>
