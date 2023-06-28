@@ -24,7 +24,7 @@ const Kiosk = () => {
                     {products.map(p =>
                         <li key={p.pno} className="text-2xl underline m-3 p-3 bg-rose-300"
                             onClick={() => { handleClickBuy(p) }}>
-                            {p.pno} - {p.pname} - {p.price}
+                            {p.pno} - {p.pname} - {p.price} 
                             <button className="border-2 m-2 p-2 rounded-sm bg-orange-300">BUY</button>
                         </li>
 
