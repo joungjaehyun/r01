@@ -5,7 +5,7 @@ const Counter2 = () => {
     const [obj, setObj]= useState({num:10})
     
     return (
-        <div>
+        <div>   
             {obj.num}
             <button onClick={()=>{
                 obj.num+=1
