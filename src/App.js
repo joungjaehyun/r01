@@ -2,6 +2,9 @@ import Counter from "./components/Counter";
 import Counter2 from "./components/Counter2";
 import Kiosk from "./components/Kiosk";
 import Logo from "./components/Logo";
+import SampleLayout from "./components/layout/SampleLayout";
+import TemplatePage from "./components/layout/TemplatePage";
+import TodoInput from "./components/todo/TodoInput";
 import ZCounter from "./components/zcounter";
 import ZKiosk from "./components/zkiosk";
 // index.js라 지었는데 폴더명만 들어감
@@ -10,7 +13,7 @@ import ZKiosk from "./components/zkiosk";
 function App() {
   return (
     <div>
-     <ZKiosk></ZKiosk>
+        <TodoInput></TodoInput>
     </div>
   );
 }
