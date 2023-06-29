@@ -4,6 +4,7 @@ import Kiosk from "./components/Kiosk";
 import Logo from "./components/Logo";
 import SampleLayout from "./components/layout/SampleLayout";
 import TemplatePage from "./components/layout/TemplatePage";
+import TODO from "./components/todo";
 import TodoInput from "./components/todo/TodoInput";
 import ZCounter from "./components/zcounter";
 import ZKiosk from "./components/zkiosk";
@@ -12,9 +13,12 @@ import ZKiosk from "./components/zkiosk";
 // index를 namaing룰상 소문자로 작성  고전적인 방식(2~3년전)
 function App() {
   return (
-    <div>
-        <TodoInput></TodoInput>
-    </div>
+    
+  
+ 
+        <TODO></TODO>
+
+
   );
 }
 

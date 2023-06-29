@@ -1,32 +1,32 @@
 import { useState } from "react";
 import TodoInput from "./TodoInput";
-
-const initState = {title:'',content:''}
-
-
+import TodoList from "./TodoList";
+import TemplatePage from "../layout/TemplatePage";
 
 
+
+
+// Todo Index 생성
 const TODO = () => {
+     const [todoArr, setTodoArr] =useState([])
 
-    const [obj, setObj] = useState(initState)
-    const handleChange = (e)=>{
-      
-        obj[e.target.name]=e.target.value
- 
-        setObj({...obj})
-     }
-     const handleShow = ()=>{
-         console.log(obj)
-     }
-     const handleClear = () =>{
-         setObj({...initState})
-     }
- 
+    const addTodo= (newTodo)=>{
+        console.log("add Todo", newTodo)
+        
+        setTodoArr([...todoArr,newTodo])
+    }
+    
+    const removeTodo = (tno) =>{
+
+        console.log("removeTodo ", tno)
+        setTodoArr(todoArr.filter(ele=> ele.tno!==tno))
+    }
 
     return ( 
-        <>
-        <TodoInput obj={initState} handleChange={handleChange} handleShow={handleShow} handleClear={handleClear}></TodoInput>
-        </>
+        <TemplatePage>
+       <TodoInput addTodo={addTodo}></TodoInput>
+       <TodoList arr={todoArr} removeFn={removeTodo}></TodoList>
+        </TemplatePage>
      );
 }
  

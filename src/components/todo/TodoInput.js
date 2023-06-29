@@ -1,13 +1,27 @@
 import { useState } from "react";
 
-
+const initState = {title:'',content:''}
 let tno =1;
 
 
-const TodoInput = ({obj,handleChange,handleClear,handleShow}) => {
+const TodoInput = ({addTodo}) => {
 
-
-   
+    const [obj, setObj] = useState({...initState})
+    const handleChange = (e)=>{
+      
+        obj[e.target.name]=e.target.value
+ 
+        setObj({...obj})
+     }
+     const handleAdd = ()=>{
+         console.log(obj)
+         addTodo({...obj, tno:tno++})
+         setObj({...initState})
+     }
+     const handleClear = () =>{
+         setObj({...initState})
+     }
+ 
     return (
         <>
 
@@ -29,7 +43,7 @@ const TodoInput = ({obj,handleChange,handleClear,handleShow}) => {
            
            </div>
            <div>
-            <button onClick={handleShow}>SHOW</button>
+            <button onClick={handleAdd}>ADD</button>
             <button onClick={handleClear}>CLEAR</button>
            </div>
             {/* 입력창이 1개일때 */}
