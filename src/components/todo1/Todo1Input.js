@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const Todo1Input = ({ changeView,addTodo }) => {
+const Todo1Input = ({ addTodo }) => {
 
     const [todo, setTodo] = useState({ title: '' })
 
     return (
-        <div className="w-full h-[90vh] bg-green-300">
+        <div className="w-full bg-green-300">
             <div>Todo1 Input</div>
             <div>
                 <input
