@@ -3,6 +3,7 @@ import Todo1List from "./Todo1List";
 import Todo1Input from "./Todo1Input";
 import Todo1Read from "./Todo1.Read";
 import uuid from 'react-uuid'
+import Saver from "./Saver";
 
 // const viewMap={}
 const Todo1 = () => {
@@ -15,6 +16,19 @@ const Todo1 = () => {
     // const changeView = (str) =>{
     //     setCmd(str)
     // }
+    // 저장기능 useEffect
+    useEffect(()=>{
+        const jsonStr =localStorage.getItem("todos")
+
+        if(jsonStr){
+            setTodos(JSON.parse(jsonStr))
+        }
+    },[])
+    // 저장함수
+    const saveAll = ()=>{
+        const str =JSON.stringify(todos)
+        localStorage.setItem("todos",str)
+    }
 
     const addTodo = (todoObj) =>{
 
@@ -76,7 +90,7 @@ const Todo1 = () => {
     //     //     return <Todo1Read changeView={changeView} current={current}></Todo1Read>
     //     // }
     // }
-
+    // save
 
     return (
         <>
@@ -86,7 +100,7 @@ const Todo1 = () => {
             <Todo1Input addTodo={addTodo}></Todo1Input>
             <Todo1Read  current={current} remove={remove} modify={modify}></Todo1Read>
             <Todo1List todos={todos}  requestView={requestView}></Todo1List>
-
+            <Saver save={saveAll}></Saver>
             </div>
         </>
         );
