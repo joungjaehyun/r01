@@ -4,11 +4,12 @@
 
 import Kiosk from "./components/kiosk";
 import Todo1 from "./components/todo1";
+import Todo2 from "./components/todo2";
 // index를 namaing룰상 소문자로 작성  고전적인 방식(2~3년전)
 function App() {
   return (
     <div>
-      <Todo1></Todo1>
+      <Todo2></Todo2>
 
     </div>
   );
