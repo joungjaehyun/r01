@@ -16,3 +16,17 @@ export const postTodo = async(todo) =>{
 
     return res.data
 }
+
+export const getTodo = async(tno) =>{
+
+    const res = await axios.get(`${server}${tno}`)
+
+    return res.data
+}
+
+export const removeTodo = async(tno) =>{
+
+    const res = await axios.delete(`${server}${tno}`)
+
+    return res.data
+}
