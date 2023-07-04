@@ -30,3 +30,10 @@ export const removeTodo = async(tno) =>{
 
     return res.data
 }
+
+export const putTodo = async(todo) =>{
+
+    const res = await axios.put(`${server}${todo.tno}`,todo)
+
+    return res.data
+}
